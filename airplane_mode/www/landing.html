@@ -1,0 +1,62 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<section class="hero text-center py-5">
+  <h1>Find and Book Your Next Flight</h1>
+  <p class="lead">Fast, easy, reliable ticket booking</p>
+</section>
+
+<section class="booking-form container">
+  <form id="booking-form">
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" class="form-control" name="name" required>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" name="email" required>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="text" class="form-control" name="phone" required>
+    </div>
+    <div class="form-group">
+      <label>From</label>
+      <input type="text" class="form-control" name="origin" required>
+    </div>
+    <div class="form-group">
+      <label>To</label>
+      <input type="text" class="form-control" name="destination" required>
+    </div>
+    <div class="form-group">
+      <label>Travel Date</label>
+      <input type="date" class="form-control" name="travel_date" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Book Now</button>
+  </form>
+  <div id="booking-result"></div>
+</section>
+{% endblock %}
+
+{% block script %}
+<script>
+document.getElementById("booking-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target));
+
+  frappe.call({
+    method: "your_app.www.landing.submit_booking",
+    args: data,
+    callback: function(r) {
+      if (r.message && r.message.success) {
+        document.getElementById("booking-result").innerHTML =
+          "<p class='text-success'>Booking confirmed! Reference: " + r.message.booking_id + "</p>";
+        e.target.reset();
+      }
+    }
+  });
+});
+</script>
+{% endblock %}

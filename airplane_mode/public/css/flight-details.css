@@ -1,0 +1,128 @@
+/* =========================
+   SINGLE FLIGHT DETAIL PAGE
+   ========================= */
+
+.flight-hero {
+    width: 100%;
+    height: 32vh;
+    min-height: 220px;
+
+    background-image: url("https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+
+    border-radius: 0 0 16px 16px;
+    margin-bottom: -40px;
+}
+
+.flight-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 20, 40, 0.4);
+    border-radius: 0 0 16px 16px;
+}
+
+
+.flight-page {
+    position: relative;
+    z-index: 1;
+
+    max-width: 700px;
+    margin: 0 auto 60px;
+
+    background: #ffffff;
+    border-radius: 14px;
+    border-left: 8px solid #3768db;
+
+    padding: 34px 36px;
+
+    box-shadow: 0 10px 30px rgba(20, 30, 60, 0.12);
+}
+
+.flight-page h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a2b4c;
+    margin: 0 0 30px;
+}
+
+.flight-page h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a2b4c;
+    margin-bottom: 15px;
+}
+
+.flight-page ul {
+    list-style: none;
+    color: #555555;
+    padding-left: 0;
+    line-height: 1.9;
+    margin: 0 0 28px;
+}
+
+.flight-page ul li {
+    padding-left: 22px;
+    position: relative;
+}
+
+.flight-page ul li::before {
+    content: "✈";
+    position: absolute;
+    left: 0;
+    color: #3768db;
+}
+
+.flight-page ul li strong {
+    color: #1a2b4c;
+}
+
+
+/* Book Flight button */
+.btn-book {
+    display: inline-block;
+    background: #3768db;
+    color: #ffffff !important;
+    padding: 12px 30px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+
+    box-shadow: 0 4px 14px rgba(55, 104, 219, 0.35);
+    transition: 0.2s ease;
+}
+
+.btn-book:hover {
+    background: #274ea8;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .flight-hero {
+        height: 24vh;
+        min-height: 160px;
+    }
+
+    .flight-page {
+        margin-left: 16px;
+        margin-right: 16px;
+        padding: 26px 22px;
+    }
+
+    .flight-page h1 {
+        font-size: 22px;
+    }
+
+}

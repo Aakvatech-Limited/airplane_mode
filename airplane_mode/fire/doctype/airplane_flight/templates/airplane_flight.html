@@ -1,0 +1,41 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+
+<link rel="stylesheet" href="/assets/airplane_mode/css/flight-details.css">
+<!-- Photo banner (optional — delete this div if you don't want it) -->
+<div class="flight-hero"></div>
+
+<div class="flight-page">
+
+    <h1>{{ doc.name }}</h1>
+
+    <h2>Flight Details</h2>
+
+    <ul>
+        <li>
+            Airline:
+            {{ frappe.db.get_value("Airplane", doc.airplane, "airline") }}
+        </li>
+
+        <li>
+            {{ doc.source_airport_code }} → {{ doc.destination_airport_code }}
+        </li>
+
+        <li>
+            {{ frappe.utils.format_date(doc.date_of_departure, "d MMMM, YYYY") }} | {{ doc.time_of_departure }}
+        </li>
+
+        <li>
+            Duration:
+            {{ frappe.utils.format_duration(doc.duration) }}
+        </li>
+    </ul>
+
+    <a href="/book-flight/new?airplane-flight={{ doc.name }}&flight-price={{ doc.flight_price }}" class="btn-book">
+        Book Flight
+    </a>
+
+</div>
+
+{% endblock %}

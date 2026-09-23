@@ -1,0 +1,82 @@
+{
+  "doctype": "DocType",
+  "name": "MPesa Payment Log",
+  "module": "Fire",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "track_changes": 1,
+  "autoname": "field:conversation_id",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "field_order": [
+    "conversation_id",
+    "sales_invoice",
+    "msisdn",
+    "amount",
+    "status",
+    "transaction_id",
+    "raw_response"
+  ],
+  "fields": [
+    {
+      "fieldname": "conversation_id",
+      "fieldtype": "Data",
+      "label": "Conversation ID",
+      "unique": 1,
+      "reqd": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "sales_invoice",
+      "fieldtype": "Link",
+      "options": "Sales Invoice",
+      "label": "Sales Invoice",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "msisdn",
+      "fieldtype": "Data",
+      "label": "Customer MSISDN",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "label": "Amount"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "options": "Pending\nSuccess\nFailed",
+      "default": "Pending",
+      "label": "Status",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "transaction_id",
+      "fieldtype": "Data",
+      "label": "M-Pesa Transaction ID"
+    },
+    {
+      "fieldname": "raw_response",
+      "fieldtype": "Long Text",
+      "label": "Raw Response Log"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Accounts User",
+      "read": 1
+    }
+  ]
+}
