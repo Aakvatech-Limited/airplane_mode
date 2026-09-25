@@ -1,41 +1,138 @@
-### Airplane Mode
+# Airplane Mode
 
-Its desgn to improve skills
+Airplane Mode is a Frappe Framework application built as a practical learning project for airline, flight, ticketing, and payment workflows.
 
-### Installation
+The app demonstrates how core Frappe concepts such as DocTypes, reports, notifications, print formats, web forms, APIs, and public pages can be combined into a working business application.
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+## Features
+
+The project currently includes functionality around:
+
+- Airline management
+- Airplane management
+- Airport management
+- Flight and airplane flight records
+- Passenger management
+- Airplane ticket booking
+- Ticket add-ons
+- Source and destination airports
+- M-Pesa payment handling and payment logs
+- Public-facing landing page
+- Reports
+- Notifications
+- Print Formats
+- Web Forms
+
+## Main DocTypes
+
+Some of the main DocTypes currently included are:
+
+- Airline
+- Airplane
+- Airport
+- Airplane Flight
+- Flight
+- Flight Passenger
+- Airplane Ticket
+- Airplane Ticket Add On Item
+- Airplane Ticket Add On Type
+- Ticket Add On Selector
+- Source Airport
+- Destination Airport
+- M-Pesa Payment Log
+
+## Requirements
+
+- Python 3.10 or later
+- Frappe Framework
+- Bench CLI
+
+Frappe and its dependencies should normally be installed and managed through Bench.
+
+## Installation
+
+From your Frappe Bench directory:
 
 ```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app airplane_mode
+bench get-app https://github.com/samsonmabula48-alt/airplane_mode.git
+bench --site your-site-name install-app airplane_mode
 ```
 
-### Contributing
+Then migrate the site:
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+```bash
+bench --site your-site-name migrate
+```
+
+For a local development environment:
+
+```bash
+bench start
+```
+
+## Project Structure
+
+```text
+airplane_mode/
+├── airplane_mode/
+│   ├── api/
+│   ├── fire/
+│   │   ├── doctype/
+│   │   ├── notification/
+│   │   ├── print_format/
+│   │   ├── report/
+│   │   └── web_form/
+│   ├── public/
+│   ├── templates/
+│   ├── www/
+│   └── hooks.py
+├── pyproject.toml
+└── README.md
+```
+
+The main Frappe module is `Fire`, which contains the application's DocTypes and related configuration.
+
+## Development
+
+Move into the application directory:
 
 ```bash
 cd apps/airplane_mode
+```
+
+Install the configured pre-commit hooks:
+
+```bash
 pre-commit install
 ```
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+Run all configured checks before submitting changes:
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+```bash
+pre-commit run --all-files
+```
 
-### CI
+The repository uses development tooling including:
 
-This app can use GitHub Actions for CI. The following workflows are configured:
+- Ruff
+- ESLint
+- Prettier
+- PyUpgrade
+- Frappe Semgrep rules
+- pip-audit
 
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
+## Contributing
 
+Contributions and improvements are welcome.
 
-### License
+When contributing:
 
-mit
+- Keep changes focused.
+- Follow Frappe development conventions.
+- Add tests for new business logic where practical.
+- Avoid committing credentials or environment-specific configuration.
+- Clearly describe the purpose of the change in the pull request.
+
+## License
+
+This project is licensed under the [MIT License](license.txt).
